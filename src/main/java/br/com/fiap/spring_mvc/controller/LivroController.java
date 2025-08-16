@@ -1,6 +1,5 @@
 package br.com.fiap.spring_mvc.controller;
 
-
 import br.com.fiap.spring_mvc.entity.Livro;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,7 @@ import java.util.List;
 @RequestMapping("/livros")
 public class LivroController {
     @GetMapping("/lista")
-    public String listarlivros(Model model) {
+    public String listarLivros(Model model) {
         Livro livro1 = new Livro();
         livro1.setId(1L);
         livro1.setTitulo("Harry Potter");
@@ -25,8 +24,6 @@ public class LivroController {
         livro3.setTitulo("O diário de um banana");
         List<Livro> livros = List.of(livro1, livro2, livro3);
         model.addAttribute("listaLivros", livros);
-        
-
-        return "livrosLista";
+        return "livroLista";
     }
 }
