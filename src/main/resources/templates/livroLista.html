@@ -25,31 +25,33 @@
                 <tr th:each="livro: ${listaLivros}">
                     <td th:text="${livro.id}"> </td>
                     <td th:text="${livro.titulo}"> </td>
-                    <td><button th:attr="onclick=|showModal('infoModal' + ${livro.id})|">
-                                Ver</button> </td>
+                    <td>
+                        <button th:attr="onclick=|showModal('infoModal' + ${livro.id})|">
+                            Ver
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-
         <div th:each="livro: ${listaLivros}"
              th:attr="id=${'infoModal' + livro.id}"
-             style="diplsay: none">
+             style="display: none">
             <p>
                 ID: <span th:text="${livro.id}"></span><br/>
                 Título: <span th:text="${livro.titulo}"></span><br/>
                 Autor: <span th:text="${livro.autor}"></span><br/>
-                Categroria: <span th:text="${livro.catehoria.descricao}"></span><br/>
+                Categoria: <span th:text="${livro.categoria.descricao}"></span><br/>
                 Editora: <span th:text="${livro.editora}"></span><br/>
                 Preço: <span th:text="${livro.preco}"></span><br/>
                 ISBN: <span th:text="${livro.isbn}"></span><br/>
-                Data de publicação: <span th:text="${livro.data}"></span><br/>
-                Editar | Deletar
+                Data de Publicação: <span th:text="${#temporals.format(livro.dataPublicacao, 'dd/MM/yyyy')}"></span><br/>
 
+                <a th:href="@{/livros/cadastro/{id}(id = ${livro.id})}">Editar</a> | <a th:href="@{/livros/deletar/{id}(id = ${livro.id})}">Deletar</a>
             </p>
-
-            Fechar
+            <button th:attr="onclick=|hideModal('infoModal' + ${livro.id})|">
+                Fechar
+            </button>
         </div>
-
     </div>
     <div th:insert="~{fragments/footer :: rodape}"></div>
 </body>
