@@ -6,7 +6,9 @@
 </head>
 <body>
     <div th:fragment="rodape">
-        Todos os direitos reservados.
+        <hr />
+        <h2><span th:text="${#messages.msg('rodape.titulo')}"></span></h2>
+        <span th:text="${#messages.msg('rodape.mensagem')}"></span>
     </div>
 </body>
 </html>
